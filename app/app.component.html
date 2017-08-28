@@ -8,7 +8,7 @@
 
 <main>
     <div class="col-sm-4">
-      <send-message></send-message>
+      <send-message (sendMessage)="onSendMessage($event)"></send-message>
     </div>
     <div class="col-sm-4">
         {{message}}

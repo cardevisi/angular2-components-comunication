@@ -1,12 +1,12 @@
-<form>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-group">
-        <label for="exampleInputEmail1">Send Message</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <label for="name">Send Message</label>
+        <input class="form-control" name="first" ngModel required #first="ngModel" value="">
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- <button type="submit" class="btn btn-primary" (click)="clickToSend($event)">Submit</button> -->
+    <button class="btn btn-primary">Submit</button>
+    <p>First name value: {{ first.value }}</p>
+    <p>First name valid: {{ first.valid }}</p>
+    <p>Form value: {{ form.value | json }}</p>
+    <p>Form valid: {{ form.valid }}</p>
 </form>

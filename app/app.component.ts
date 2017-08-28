@@ -24,6 +24,9 @@ export class AppComponent {
   selectUser(user) {
     this.activeUser = user;
     console.log(this.activeUser);
+  };
 
+  onSendMessage(msg) {
+    console.log(':: AppComponent => onSendMessage =>', msg);
   };
 }

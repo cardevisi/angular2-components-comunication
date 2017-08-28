@@ -23,6 +23,10 @@ var AppComponent = (function () {
         console.log(this.activeUser);
     };
     ;
+    AppComponent.prototype.onSendMessage = function (msg) {
+        console.log(':: AppComponent => onSendMessage =>', msg);
+    };
+    ;
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
