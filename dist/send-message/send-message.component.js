@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var data_service_1 = require("../data.service");
 var SendMessage = (function () {
-    function SendMessage() {
+    function SendMessage(data) {
+        this.data = data;
         this.sendMessage = new core_1.EventEmitter();
         this.currentMessage = "Hello!";
-        this.sendMessage.emit({ msg: 'SendByEmit' });
-        console.log('SendMessage');
+        //this.sendMessage.emit({msg:'SendByEmit'});
+        //console.log('SendMessage');
     }
     SendMessage.prototype.clickToSend = function (event) {
         event.preventDefault();
@@ -23,9 +25,14 @@ var SendMessage = (function () {
     };
     ;
     SendMessage.prototype.onSubmit = function (f) {
-        console.log(f.value); // { first: '', last: '' }
-        console.log(f.valid); // false
+        console.log('f.value', f.value); // { first: '', last: '' }
+        //console.log(f.valid);  // false
         this.sendMessage.emit({ msg: f.value });
+        this.data.changeMessage(f.value.first);
+    };
+    SendMessage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.currentMessage.subscribe(function (message) { return _this.message = message; });
     };
     __decorate([
         core_1.Output(),
@@ -36,7 +43,7 @@ var SendMessage = (function () {
             selector: 'send-message',
             templateUrl: './send-message.component.html'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [data_service_1.DataService])
     ], SendMessage);
     return SendMessage;
 }());

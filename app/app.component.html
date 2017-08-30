@@ -7,12 +7,13 @@
 </header>
 
 <main>
-    <div class="col-sm-4">
-      <send-message (sendMessage)="onSendMessage($event)"></send-message>
-    </div>
-    <div class="col-sm-4">
-        {{message}}
-      <receive-message [receiveMessage]="'sasa'"></receive-message>
+  <div class="row">
+      <div class="col-sm-6">
+        <send-message (sendMessage)="onSendMessage($event)"></send-message>
+      </div>
+      <div class="col-sm-6">
+        <receive-message [receiveMessage]="'Talk to me'" ></receive-message>
+      </div>
     </div>
 </main>
 

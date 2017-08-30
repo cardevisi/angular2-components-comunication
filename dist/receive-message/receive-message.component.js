@@ -10,10 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var data_service_1 = require("../data.service");
 var ReceiveMessage = (function () {
-    function ReceiveMessage() {
-        this.receiveMessage = 'aqui';
+    function ReceiveMessage(data) {
+        this.data = data;
+        this.receiveMessage = 'Hello';
     }
+    ReceiveMessage.prototype.onSubmit = function (f) {
+        this.data.changeMessage(f.value.receive - text);
+    };
+    ReceiveMessage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.currentMessage.subscribe(function (message) { return _this.message = message; });
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", String)
@@ -22,7 +31,8 @@ var ReceiveMessage = (function () {
         core_1.Component({
             selector: 'receive-message',
             templateUrl: './receive-message.component.html'
-        })
+        }),
+        __metadata("design:paramtypes", [data_service_1.DataService])
     ], ReceiveMessage);
     return ReceiveMessage;
 }());
