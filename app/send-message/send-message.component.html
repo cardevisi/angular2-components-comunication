@@ -1,12 +1,14 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="alert alert-success">Broadcast Message : {{message}}</div>     
     <div class="form-group">
         <label for="name">Send Message</label>
         <input class="form-control" name="first" ngModel required #first="ngModel" value="">
     </div>
     <!-- <button type="submit" class="btn btn-primary" (click)="clickToSend($event)">Submit</button> -->
     <button class="btn btn-primary">Submit</button>
-    <p>First name value: {{ first.value }}</p>
-    <p>First name valid: {{ first.valid }}</p>
-    <p>Form value: {{ form.value | json }}</p>
-    <p>Form valid: {{ form.valid }}</p>
 </form>
+
+<p>First name value: {{ first.value }}</p>
+<p>First name valid: {{ first.valid }}</p>
+<p>Form value: {{ form.value | json }}</p>
+<p>Form valid: {{ form.valid }}</p>
